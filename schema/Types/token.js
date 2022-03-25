@@ -1,0 +1,103 @@
+const graphql = require('graphql');
+const Token = require('../../models/token');
+
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLInt,
+  GraphQLBoolean,
+  GraphQLFloat,
+  GraphQLList
+} = graphql;
+
+//Tokens
+const TokenType = new GraphQLObjectType({
+  name: 'Token',
+  fields: () => ({
+    id: { type: GraphQLID },
+    PlanetID: { type: GraphQLInt },
+    PlanetName: { type: GraphQLString },
+    PlanetSector: { type: GraphQLString },
+    PlanetCoordinates: { type: GraphQLString },
+    Background: { type: GraphQLString },
+    BackgroundStarDensity: { type: GraphQLString },
+    BackgroundNebula: { type: GraphQLString },
+    SystemType: { type: GraphQLString },
+    StarOneType: { type: GraphQLString },
+    StarOneSpectralClass: { type: GraphQLString },
+    StarOneSpectralNumber: { type: GraphQLInt },
+    StarOneSequence: { type: GraphQLString },
+    StarTwoType: { type: GraphQLString },
+    StarTwoSpectralClass: { type: GraphQLString },
+    StarTwoSpectralNumber: { type: GraphQLInt },
+    StarTwoSequence: { type: GraphQLString },
+    StarThreeType: { type: GraphQLString },
+    StarThreeSpectralClass: { type: GraphQLString },
+    StarThreeSpectralNumber: { type: GraphQLInt },
+    StarThreeSequence: { type: GraphQLString },
+    ExoClass: { type: GraphQLString },
+    MotherPlanetType: { type: GraphQLString },
+    MotherPlanetSubtype: { type: GraphQLString },
+    WorldType: { type: GraphQLString },
+    WorldSubtype: { type: GraphQLString },
+    Moons: { type: GraphQLInt },
+    MoonOneType: { type: GraphQLString },
+    MoonTwoType: { type: GraphQLString },
+    MoonThreeType: { type: GraphQLString },
+    Ring: { type: GraphQLString },
+    RingType: { type: GraphQLString },
+    BioDiversityScale: { type: GraphQLString },
+    CarniverousVegetation: { type: GraphQLBoolean },
+    SecretBiosphere: { type: GraphQLBoolean },
+    Gaia: { type: GraphQLBoolean },
+    IntelligentMicrobiome: { type: GraphQLBoolean },
+    ApexPredators: { type: GraphQLInt },
+    SentientLifeFormType: { type: GraphQLString },
+    FitnessFactor: { type: GraphQLString },
+    IntelligenceCapacity: { type: GraphQLString },
+    ConciousnessAffinity: { type: GraphQLString },
+    RarityScore: { type: GraphQLInt },
+    Rank: { type: GraphQLInt },
+    Highresimage: { type: GraphQLString },
+    Image: { type: GraphQLString },
+    Neighbor1: { type: GraphQLString },
+    Neighbor2: { type: GraphQLString },
+    Neighbor3: { type: GraphQLString },
+    Neighbor4: { type: GraphQLString },
+    Neighbor5: { type: GraphQLString },
+    Neighbor6: { type: GraphQLString },
+    Neighbor7: { type: GraphQLString },
+    Neighbor8: { type: GraphQLString },
+    Neighbor9: { type: GraphQLString },
+    Neighbor10: { type: GraphQLString },
+    CivilizationAge: { type: GraphQLString },
+    Population: { type: GraphQLInt },
+    PopGrowth: { type: GraphQLFloat },
+    GovernmentType: { type: GraphQLString },
+    EnergyOutput: { type: GraphQLString },
+    WealthIndex: { type: GraphQLString },
+    MilitaryForce: { type: GraphQLString },
+    SpecialStatus: { type: GraphQLString },
+    HostilityLevel: { type: GraphQLString },
+    DiseaseIndex: { type: GraphQLString },
+    EcologicalSynergy: { type: GraphQLString },
+    FitnessLevel: { type: GraphQLInt },
+    IntelligenceLevel: { type: GraphQLInt },
+    ConciousnessLevel: { type: GraphQLInt },
+    PopulationPoints: { type: GraphQLInt },
+    TechnologyPoints: { type: GraphQLInt },
+    ConsciousnessPoints: { type: GraphQLInt },
+    GovernmentPoints: { type: GraphQLInt },
+    MilitaryPoints: { type: GraphQLInt },
+    TokenHolder: { type: GraphQLString },
+    tokens: {
+      type: new GraphQLList(TokenType),
+      resolve(parent, args) {
+        return Token.find({})
+      }
+    }
+  })
+});
+
+module.exports = TokenType;
